@@ -44,7 +44,7 @@ app.get("/mavros", (req, res) => {
 });
 
 app.get("/golds", (req, res) => {
-  res.redirect("http://18.230.167.89:3333/");
+  res.redirect("http://18.231.114.204:5555/");
 });
 
 http: app.listen(3333 || process.env.PORT, () => {
