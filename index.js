@@ -1,54 +1,54 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var session = require("express-session");
-var nunjucks = require("nunjucks");
+var express = require("express")
+var bodyParser = require("body-parser")
+var path = require("path")
+var cookieParser = require("cookie-parser")
+var session = require("express-session")
+var nunjucks = require("nunjucks")
 
-var app = express();
+var app = express()
 
-var pedidos = [];
+var pedidos = []
 
-let agorasim = "";
+let agorasim = ""
 
-var enderecoCompleto = "";
+var enderecoCompleto = ""
 
-const port = 3000 || process.env.PORT;
+const port = 3000 || process.env.PORT
 
 app.use(
   bodyParser.urlencoded({
     extended: false,
   })
-);
+)
 
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")))
 
 nunjucks.configure(__dirname + "/views", {
   autoescape: true,
   express: app,
-});
+})
 
-app.use(cookieParser());
+app.use(cookieParser())
 app.use(
   session({
     secret: "secret!",
     resave: false,
     saveUninitialized: true,
   })
-);
+)
 
 app.get("/mavros", (req, res) => {
-  res.redirect("http://18.230.167.89:5555/");
-});
+  res.redirect("http://18.230.167.89:5555/")
+})
 
 app.get("/golds", (req, res) => {
-  res.redirect("http://18.231.114.204:5555/");
-});
+  res.redirect("https://golds-burger-app.vercel.app/")
+})
 
 http: app.listen(3333 || process.env.PORT, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+  console.log(`Example app listening on port ${port}`)
+})
 
 //app.listen(3000);
